@@ -126,12 +126,12 @@ def load_public_key(certPath):
 
 
 JWT_AUTH = {
-    'JWT_SECRET_KEY': load_public_key('djangotodo\\azure_signing.cer'),
+    'JWT_SECRET_KEY': load_public_key(path.normcase('djangotodo/azure_signing.cer')),
     'JWT_ALGORITHM': 'RS256',
     'JWT_VERIFY': True,
     'JWT_VERIFY_EXPIRATION': True,
     'JWT_LEEWAY': 0,
     'JWT_AUDIENCE': 'http://mattiasnkuai.onmicrosoft.com/djangotodo',
     'JWT_ISSUER': 'https://sts.windows.net/1fa192fb-79c3-4e2b-b9c5-8aa6c40de422/',
-    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
