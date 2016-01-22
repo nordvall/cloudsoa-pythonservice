@@ -1,5 +1,6 @@
 # IntelliJ/PyCharm settings
 .idea/
+*.iml
 
 # Django database
 *.sqlite3

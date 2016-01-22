@@ -1,7 +1,8 @@
 from datetime import datetime
 from pytz import utc
 from rest_framework import serializers
-from models import ToDo, InMemoryStore
+from models import ToDo
+
 
 class ToDoSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -27,3 +28,13 @@ class ToDoSerializer(serializers.Serializer):
         todo.updated_by = validated_data.get('updated_by', todo.updated_by)
         todo.updated_at = utc.localize(datetime.utcnow())
         return todo
+
+
+class ToDoListSerializer(serializers.Serializer):
+    items = ToDoSerializer(many=True)
+
+    def create(self, validated_data):
+        pass
+
+    def update(self, instance, validated_data):
+        pass
